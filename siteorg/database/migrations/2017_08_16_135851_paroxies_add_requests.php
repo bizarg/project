@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class ParoxiesAddRequests extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('proxies', function (Blueprint $table) {
+            $table->integer('good')->default('0');
+            $table->integer('bad')->default('0');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('proxies', function (Blueprint $table) {
+            $table->dropColumn('good');
+            $table->dropColumn('bad');
+
+        });
+    }
+}
